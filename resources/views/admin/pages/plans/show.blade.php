@@ -6,9 +6,9 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
         <li class="breadcrumb-item"><a href="{{ route('plans.index') }}">Planos</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('plans.show', $plan->id) }}">Detalhes</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('plans.show', $plan->url) }}" class="active">Detalhes</a></li>
     </ol>
-    <h1>Detalhes do plano <b>{{ $plan->name }}</b></h1> 
+    <h1>Detalhes do plano <b class="text-success">{{ $plan->name }}</b></h1> 
 @stop
 
 @section('content')    
@@ -17,6 +17,7 @@
         
         </div>        
         <div class="card-body">
+            @include('admin.includes.alerts')
            <ul class="list-group">
                <li class="list-group-item"><strong>Nome: </strong>{{ $plan->name }}</li>
                <li class="list-group-item"><strong>Url: </strong>{{  $plan->url }}</li>   
@@ -25,14 +26,13 @@
                <li class="list-group-item"><strong>Criado em: </strong>{{ date("d/m/Y", strtotime($plan->created_at)) }}</li>      
                <li class="list-group-item"><strong>Última atualização: </strong>{{ date("d/m/Y", strtotime($plan->updated_at)) }}</li>
                <li class="list-group-item">
-                    <form action="{{ route('plans.destroy', $plan->id) }}" method="POST">
+                    <form action="{{ route('plans.destroy', $plan->url) }}" method="POST">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Deletar</button>
                     </form>
                </li>
-            </ul>
-            </ul>
+            </ul>          
         </div>        
     </div>
 @stop

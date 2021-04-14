@@ -5,9 +5,9 @@
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('plans.index') }}">Planos</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('plans.index') }}" class="active">Planos</a></li>
     </ol>
-    <h1>Planos <a href="{{ route('plans.create') }}" class="btn btn-dark ml-3"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a></h1> 
+    <h1 class="text-success">Planos <a href="{{ route('plans.create') }}" class="btn btn-success ml-3"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a></h1> 
 @stop
 
 @section('content')    
@@ -39,12 +39,15 @@
                             <td>{{ $plan->url }}</td>
                             <td>R${{ number_format($plan->price, 2, ',', '.') }}</td>
                             <td>{{ $plan->description }}</td>
-                            <td width=250">
-                                <a href="{{ route('plans.edit', $plan->id) }}" class="btn btn-info">
-                                    <i class="fas fa-edit"></i>
+                            <td width=350">
+                                <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-secondary">
+                                    <i class="fas fa-clipboard-list"> Detalhes</i>
                                 </a>
-                                <a href="{{ route('plans.show', $plan->id) }}" class="btn btn-warning">
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                <a href="{{ route('plans.edit', $plan->url) }}" class="btn btn-info">
+                                    <i class="fas fa-edit"> Editar</i>
+                                </a>
+                                <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning">
+                                    <i class="fa fa-eye" aria-hidden="true"> Ver</i>
                                 </a>
                             </td>
                         </tr>                        
