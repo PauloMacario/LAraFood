@@ -5,10 +5,11 @@
 @section('content_header')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-    <li class="breadcrumb-item active"><a href="{{ route('plans.create') }}" class="active">Adicionar plano</a></li>   
+    <li class="breadcrumb-item "><a href="{{ route('plans.index') }}">Planos</a></li>  
+    <li class="breadcrumb-item active"v aria-current="page">Adicionar plano</li>   
 </ol>
     <h1 class="text-success">Cadastrar novo plano</h1> 
-@stop
+@endsection
 
 @section('content')    
     <div class="card">
@@ -20,4 +21,4 @@
             </form>
         </div>
     </div>
-@stop    
+@endsection    

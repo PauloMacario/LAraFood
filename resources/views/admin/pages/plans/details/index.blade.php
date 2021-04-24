@@ -7,7 +7,7 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
         <li class="breadcrumb-item "><a href="{{ route('plans.index') }}">Planos</a></li>
         <li class="breadcrumb-item "><a href="{{ route('plans.show', $plan->url) }}">{{ $plan->name }}</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('details.plan.index', $plan->url) }}" class="active">Detalhes</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detalhes</li>
     </ol>
     <h1>Detalhes do plano <b class="text-success">{{ $plan->name }}</b> <a href="{{ route('details.plan.create', $plan->url) }}" class="btn btn-success ml-3"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a></h1> 
 @stop

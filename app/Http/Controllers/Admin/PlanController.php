@@ -39,7 +39,7 @@ class PlanController extends Controller
 
         $this->repository->create($data);
 
-            return redirect()->route('plans.index');
+        return redirect()->route('plans.index');
     }
 
     public function show($url)

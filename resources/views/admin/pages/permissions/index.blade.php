@@ -1,19 +1,21 @@
 @extends('adminlte::page')
 
-@section('title', 'Planos')
+@section('title', 'Permissões')
 
 @section('content_header')
+<nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Planos</li>
+        <li class="breadcrumb-item active" aria-current="page">Permissões</li>
     </ol>
-    <h1 class="text-success">Planos <a href="{{ route('plans.create') }}" class="btn btn-success ml-3"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a></h1> 
+</nav>
+    <h1 class="text-success">Permissões <a href="{{ route('permissions.create') }}" class="btn btn-success ml-3"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a></h1> 
 @stop
 
 @section('content')    
     <div class="card">
         <div class="card-header">
-            <form action="{{ route('plans.search') }}" class="form form-inline" method="POST">
+            <form action="{{ route('permissions.search') }}" class="form form-inline" method="POST">
                 @csrf              
                 <input type="text" name="filter" id="filter" class="form-control mr-3" placeholder="Por nome" value="{{ $filters['filter'] ?? ''}}">
                 <button type="submit" class="btn btn-dark"><i class="fa fa-search" aria-hidden="true"></i> Filtrar</button>
@@ -26,29 +28,25 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th>Nome do plano</th>
-                        <th>URL</th>
-                        <th>Preço</th>
+                        <th>Nome da permissão</th>
                         <th>Descrição</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($plans as $plan)
+                    @foreach ($permissions as $permission)
                         <tr>
-                            <td>{{ $plan->name }}</td>
-                            <td>{{ $plan->url }}</td>
-                            <td>R${{ number_format($plan->price, 2, ',', '.') }}</td>
-                            <td>{{ $plan->description }}</td>
-                            <td width=350">
-                                <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-secondary" title="Detalhes">
-                                    <i class="fas fa-clipboard-list"></i>
-                                </a>
-                                <a href="{{ route('plans.edit', $plan->url) }}" class="btn btn-info" title="Editar">
+                            <td>{{ $permission->name }}</td>
+                            <td>{{ $permission->description }}</td>                          
+                            <td width=350">                                
+                                <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-info" title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning" title="Visualizar">
+                                <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-warning" title="Visualizar">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                                <a href="{{ route('permissions.profiles', $permission->id) }}" class="btn btn-secondary" title="Perfis">
+                                    <i class="fa fa-address-book" aria-hidden="true"></i>
                                 </a>
                             </td>
                         </tr>                        
@@ -58,9 +56,9 @@
         </div>
         <div class="card-footer">
             @if(isset($filters))
-                {!! $plans->appends($filters)->links() !!}
+                {!! $permissions->appends($filters)->links() !!}
             @else 
-                {!! $plans->links()  !!}
+                {!! $permissions->links()  !!}
             @endif
         </div>
     </div>

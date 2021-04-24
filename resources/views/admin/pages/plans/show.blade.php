@@ -6,7 +6,7 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
         <li class="breadcrumb-item"><a href="{{ route('plans.index') }}">Planos</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('plans.show', $plan->url) }}" class="active">Detalhes</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detalhes</li>
     </ol>
     <h1>Detalhes do plano <b class="text-success">{{ $plan->name }}</b></h1> 
 @stop

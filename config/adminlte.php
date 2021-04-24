@@ -234,6 +234,16 @@ return [
             'icon' => 'fa fa-list-alt',
             'url'  => 'admin/plans',
         ],
+        [
+            'text' => 'Perfis',
+            'icon' => 'fa fa-address-book',
+            'url'  => 'admin/profiles',
+        ],
+        [
+            'text' => 'Permissões',
+            'icon' => 'fa fa-lock',
+            'url'  => 'admin/permissions',
+        ],
     ],
 
    /*  'menu' => [
