@@ -2,6 +2,7 @@
 
 Route::prefix('admin')
     ->namespace('Admin')
+    ->middleware('auth')
     ->group(function() {
 
       
@@ -17,10 +18,8 @@ Route::prefix('admin')
 
 });
 
+Route::get('/', 'Site\SiteController@index')->name('site.home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 
@@ -127,3 +126,6 @@ Route::get('/', function () {
     Route::post('profiles/{id}/permissions', 'Acl\PermissionProfileController@attachPermissionsProfile')->name('profiles.permissions.attach');
     Route::get('profiles/{id}/permission/{idPermission}/detach', 'Acl\PermissionProfileController@detachPermissionProfile')->name('profiles.permissions.detach');
     Route::get('permission/{id}/profiles/{idPermission}/detach', 'Acl\PermissionProfileController@detachPermissionProfile')->name('permissions.profiles.detach'); */
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
